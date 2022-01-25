@@ -14,7 +14,7 @@ const BOATLOAD_OF_GAS = Big(3).times(10 ** 13).toFixed();
 const App = ({ contract, currentUser, nearConfig, wallet }) => {
   const [messages, setMessages] = useState([]);
 
-  function updatePlays(){
+  function updatePlays(){ 
     let numPlays = $('.messagesViewer p').length;
     $("#show").html(numPlays);
   }
