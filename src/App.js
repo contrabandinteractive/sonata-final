@@ -5,6 +5,8 @@ import Big from 'big.js';
 import Form from './components/Form';
 import SignIn from './components/SignIn';
 import Messages from './components/Messages';
+import MusicPlayer from './components/MusicPlayer';
+import { loadPlayer } from './player.js'; 
 
 const SUGGESTED_DONATION = '0';
 const BOATLOAD_OF_GAS = Big(3).times(10 ** 13).toFixed();
@@ -12,9 +14,20 @@ const BOATLOAD_OF_GAS = Big(3).times(10 ** 13).toFixed();
 const App = ({ contract, currentUser, nearConfig, wallet }) => {
   const [messages, setMessages] = useState([]);
 
+  function updatePlays(){
+    let numPlays = $('.messagesViewer p').length;
+    $("#show").html(numPlays);
+  }
+
   useEffect(() => {
     // TODO: don't just fetch once; subscribe!
     contract.getMessages().then(setMessages);
+    //updatePlays();
+
+    let elementExists = document.getElementById("player-container");
+    if(elementExists){
+      loadPlayer();
+    }
   }, []);
 
   const onSubmit = (e) => {
@@ -40,6 +53,7 @@ const App = ({ contract, currentUser, nearConfig, wallet }) => {
         message.focus();
       });
     });
+    //updatePlays();
   };
 
   const signIn = () => {
@@ -59,17 +73,22 @@ const App = ({ contract, currentUser, nearConfig, wallet }) => {
   return (
     <main>
       <header>
-        <h1>NEAR Guest Book</h1>
-        { currentUser
-          ? <button onClick={signOut}>Log out</button>
-          : <button onClick={signIn}>Log in</button>
-        }
+        <h1>Sonata - Powered by NEAR</h1>
+        
       </header>
+      
       { currentUser
-        ? <Form onSubmit={onSubmit} currentUser={currentUser} />
+        ? ( <> <Form onSubmit={onSubmit} currentUser={currentUser} /> <MusicPlayer/> </> )
         : <SignIn/>
       }
-      { !!currentUser && !!messages.length && <Messages messages={messages}/> }
+      <div className="messagesViewer">{ !!currentUser && <Messages messages={messages}/> }</div>
+      <div className="end-area">
+      { currentUser
+          ? <button onClick={signOut}>Log out</button>
+          : <button onClick={signIn}>Log in</button>
+      }
+      </div>
+      
     </main>
   );
 };

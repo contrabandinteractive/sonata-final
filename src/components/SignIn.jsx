@@ -4,19 +4,14 @@ export default function SignIn() {
   return (
     <>
       <p>
-          This app demonstrates a key element of NEAR’s UX: once an app has
-          permission to make calls on behalf of a user (that is, once a user
-          signs in), the app can make calls to the blockchain for them without
-          prompting extra confirmation. So you’ll see that if you don’t
-          include a donation, your message gets posted right to the guest book.
+          This app is a proof of concept.
       </p>
-      <p>
-          But if you do add a donation, then NEAR will double-check that
-          you’re ok with sending money to this app.
-      </p>
-      <p>
-          Go ahead and sign in to try it out!
-      </p>
+      <p> The guiding principal seeks to address the shortcomings of traditional streaming services such as Spotify:</p>
+      <ul>
+        <li>Fairness: Paying artists fairly per stream. There's a minimum rate to stream a song, but you can also bump it up.</li>
+        <li>Transparency: Logging plays on the blockchain. Total play counts are much more difficult to falsify with bots, which will lead to more accurate charting.</li>
+        <li>Decentralization: Storing audio files on a decentralized storage network (Crust/IPFS).</li>
+      </ul>
     </>
   );
 }

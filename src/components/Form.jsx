@@ -6,6 +6,7 @@ export default function Form({ onSubmit, currentUser }) {
   return (
     <form onSubmit={onSubmit}>
       <fieldset id="fieldset">
+        <div className="hiddenArea">
         <p>Sign the guest book, { currentUser.accountId }!</p>
         <p className="highlight">
           <label htmlFor="message">Message:</label>
@@ -13,23 +14,25 @@ export default function Form({ onSubmit, currentUser }) {
             autoComplete="off"
             autoFocus
             id="message"
-            required
+            defaultValue={"Player started by " + currentUser.accountId}
           />
         </p>
+        </div>
+        <p><label>Current Artist: Black Heart Saints</label></p>
         <p>
-          <label htmlFor="donation">Donation (optional):</label>
+          <label htmlFor="donation">Contribution to Artist:</label>
           <input
             autoComplete="off"
-            defaultValue={'0'}
+            defaultValue={'0.005'}
             id="donation"
             max={Big(currentUser.balance).div(10 ** 24)}
-            min="0"
-            step="0.01"
+            min="0.001"
+            step="0.001"
             type="number"
           />
           <span title="NEAR Tokens">Ⓝ</span>
         </p>
-        <button type="submit">
+        <button type="submit" id="submitBtn" className="hiddenArea">
           Sign
         </button>
       </fieldset>

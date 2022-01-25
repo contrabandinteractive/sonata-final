@@ -3,7 +3,7 @@ import { PostedMessage, messages } from './model';
 // --- contract code goes below
 
 // The maximum number of latest messages the contract returns.
-const MESSAGE_LIMIT = 10;
+const MESSAGE_LIMIT = 9999;
 
 /**
  * Adds a new message under the name of the sender's account id.\
@@ -28,5 +28,6 @@ export function getMessages(): PostedMessage[] {
   for(let i = 0; i < numMessages; i++) {
     result[i] = messages[i + startIndex];
   }
+  //$("#show").html(numMessages);
   return result;
 }
