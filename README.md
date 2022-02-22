@@ -1,117 +1,36 @@
-Guest Book
+Sonata
+==========
+Live Demo here: https://github.com/contrabandinteractive/sonata/tree/sonata
+
+Music streaming platform for Web3. Powered by NEAR, Sonata seeks to pay artists fairly & deliver an experience that takes advantage of the robustness of the blockchain. 
+
+Inspiration
 ==========
 
-[![Build Status](https://travis-ci.com/near-examples/guest-book.svg?branch=master)](https://travis-ci.com/near-examples/guest-book)
+Spotify currently dominates the music streaming industry, but has notable flaws that are becoming increasingly obvious as technology evolves. Artists are demanding to be paid fairly. Hosting costs are up. Sonata seeks to be the next evolution of music streaming that will treat artists and listeners fairly by leveraging key pillars of blockchain technology.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/near-examples/guest-book)
+What it does
+==========
 
-<!-- MAGIC COMMENT: DO NOT DELETE! Everything above this line is hidden on NEAR Examples page -->
+1) The demo is a proof of concept intended to show how artists can be paid in NEAR tokens in exchange for allowing listeners to stream their music. Spotify currently pays on average less than half a cent per stream. The default amount in Sonata is roughly 5 cents per stream, but can be adjusted. It's an exploration of ways how an artist can be paid a more substantial amount, with the option of contributing more.
 
-Sign in with [NEAR] and add a message to the guest book! A starter app built with an [AssemblyScript] backend and a [React] frontend.
+2) Play counts are logged on the blockchain. It's a common problem in the industry for artists to pay for bots to artificially increase their plays and metrics on platforms like Spotify - but Sonata aims to hault this practice by keeping play counts honest.
 
+3) The demo illustrates how songs can be stored on decentralized networks such as Crust.
 
-Quick Start
-===========
+How we built it
+==========
 
-To run this project locally:
+This demo shows how to login and play a song - which will require a small transaction. Sonata allows you to pay artists directly, and you get to stream music!
 
-1. Prerequisites: Make sure you have Node.js ≥ 12 installed (https://nodejs.org), then use it to install [yarn]: `npm install --global yarn` (or just `npm i -g yarn`)
-2. Run the local development server: `yarn && yarn dev` (see `package.json` for a
-   full list of `scripts` you can run with `yarn`)
+This demo evolved out of the examples presented on www.near.dev. The underlying program uses smart contracts to keep track of play counts. Tokens are sent on behalf of the listener to the artist, thereby removing the middleman.
 
-Now you'll have a local development environment backed by the NEAR TestNet! Running `yarn dev` will tell you the URL you can visit in your browser to see the app.
+The demo song you will hear in the video is a song that my band Black Heart Saints wrote about the future of the web and how blockchain technology is revolutionizing every corner of every industry.
 
+Challenges we ran into
+==========
 
-Exploring The Code
-==================
+Understanding keys and their role in executing change methods took a bit of work, but I am pleased to have completed my project with the support of NEAR's discord channel. Special thanks to Benjamin Kurrek for pointing me in the right direction.
+What's next for Sonata
 
-1. The backend code lives in the `/assembly` folder. This code gets deployed to
-   the NEAR blockchain when you run `yarn deploy:contract`. This sort of
-   code-that-runs-on-a-blockchain is called a "smart contract" – [learn more
-   about NEAR smart contracts][smart contract docs].
-2. The frontend code lives in the `/src` folder.
-   [/src/index.html](/src/index.html) is a great place to start exploring. Note
-   that it loads in `/src/index.js`, where you can learn how the frontend
-   connects to the NEAR blockchain.
-3. Tests: there are different kinds of tests for the frontend and backend. The
-   backend code gets tested with the [asp] command for running the backend
-   AssemblyScript tests, and [jest] for running frontend tests. You can run
-   both of these at once with `yarn test`.
-
-Both contract and client-side code will auto-reload as you change source files.
-
-
-Deploy
-======
-
-Every smart contract in NEAR has its [own associated account][NEAR accounts]. When you run `yarn dev`, your smart contracts get deployed to the live NEAR TestNet with a throwaway account. When you're ready to make it permanent, here's how.
-
-
-Step 0: Install near-cli
---------------------------
-
-You need near-cli installed globally. Here's how:
-
-    npm install --global near-cli
-
-This will give you the `near` [CLI] tool. Ensure that it's installed with:
-
-    near --version
-
-
-Step 1: Create an account for the contract
-------------------------------------------
-
-Visit [NEAR Wallet] and make a new account. You'll be deploying these smart contracts to this new account.
-
-Now authorize NEAR CLI for this new account, and follow the instructions it gives you:
-
-    near login
-
-
-Step 2: set contract name in code
----------------------------------
-
-Modify the line in `src/config.js` that sets the account name of the contract. Set it to the account id you used above.
-
-    const CONTRACT_NAME = process.env.CONTRACT_NAME || 'your-account-here!'
-
-
-Step 3: change remote URL if you cloned this repo 
--------------------------
-
-Unless you forked this repository you will need to change the remote URL to a repo that you have commit access to. This will allow auto deployment to GitHub Pages from the command line.
-
-1) go to GitHub and create a new repository for this project
-2) open your terminal and in the root of this project enter the following:
-
-    $ `git remote set-url origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git`
-
-
-Step 4: deploy!
----------------
-
-One command:
-
-    yarn deploy
-
-As you can see in `package.json`, this does two things:
-
-1. builds & deploys smart contracts to NEAR TestNet
-2. builds & deploys frontend code to GitHub using [gh-pages]. This will only work if the project already has a repository set up on GitHub. Feel free to modify the `deploy` script in `package.json` to deploy elsewhere.
-
-
-
-  [NEAR]: https://near.org/
-  [yarn]: https://yarnpkg.com/
-  [AssemblyScript]: https://www.assemblyscript.org/introduction.html
-  [React]: https://reactjs.org
-  [smart contract docs]: https://docs.near.org/docs/develop/contracts/overview
-  [asp]: https://www.npmjs.com/package/@as-pect/cli
-  [jest]: https://jestjs.io/
-  [NEAR accounts]: https://docs.near.org/docs/concepts/account
-  [NEAR Wallet]: https://wallet.near.org
-  [near-cli]: https://github.com/near/near-cli
-  [CLI]: https://www.w3schools.com/whatis/whatis_cli.asp
-  [create-near-app]: https://github.com/near/create-near-app
-  [gh-pages]: https://github.com/tschaub/gh-pages
+The next feature I'd like to add is the option of selling tickets as NFTs. Listeners can purchase these and redeem them for access to an artist's live shows.
